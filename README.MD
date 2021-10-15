@@ -5,8 +5,8 @@ Clone instagram backend part with GraphQL, Prisma
 ## User:
 
 - [x] Create Account
-- [ ] See Profile
-- [ ] Login
+- [x] See Profile
+- [x] Login
 - [ ] Edit Profile
 - [ ] Follow User
 - [ ] Unfollow User
