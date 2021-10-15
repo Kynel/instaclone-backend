@@ -3,9 +3,8 @@ import { ApolloServer, forEachField } from 'apollo-server';
 import { PossibleFragmentSpreadsRule } from 'graphql';
 import schema from './schema';
 
-const server = new ApolloServer({ schema });
-
 const PORT = process.env.PORT;
+const server = new ApolloServer({ schema });
 
 server
   .listen(PORT)
