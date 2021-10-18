@@ -2,13 +2,16 @@ require('dotenv').config();
 import { ApolloServer, forEachField } from 'apollo-server';
 import { PossibleFragmentSpreadsRule } from 'graphql';
 import schema from './schema';
+import { getUser, protectResolver } from './users/users.utils';
 
 const PORT = process.env.PORT;
 const server = new ApolloServer({
   schema,
-  context: {
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM0NTI1NDMyfQ._RPdIhR1xy2apSExmOF_1ag8s96ucsZ-HEQnZ0m6fYs',
+  context: async ({ req }) => {
+    return {
+      loggedInUser: await getUser(req.headers.token),
+      protectResolver,
+    };
   },
 });
 
